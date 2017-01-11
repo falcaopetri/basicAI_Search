@@ -19,7 +19,12 @@ Aspirador <- function(desc = NULL, pai = NULL){
 ## Sobrecarregando o operador "==" para comparação entre estados
 Ops.Aspirador = function(obj1,obj2){
   if(.Generic == "=="){
-    return(all(obj1$desc$G == obj2$desc$G))
+    if (is.null(obj2[["P"]])) {
+      return(all(obj1$desc$G == obj2$desc$G))
+    }
+    else {
+      return(all(obj1$desc == obj2$desc))
+    }
   }
 }
 
